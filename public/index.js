@@ -1,9 +1,31 @@
 async function main() {
+    let response = await fetch('http://localhost:3001/listBooks', {
+        method:"GET",
+    });
 
-    let response = await fetch('http://localhost:3001/listBooks')
-    let books = await response.json()
+    let books = await response.json();
+    console.log(books);
 
     books.forEach(renderBook)
+}
+
+async function updateBook() {
+    let response = await fetch('http://localhost:3001/updateBook', {
+        method: "PATCH",
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+            "id": 3,
+            "title": "The Legends of Arathrae",
+            "year": 2016,
+            "description": "This anthology tells the intertwined narratives of six fairy tales.",
+            "quantity": 8,
+            "imageURL": "/assets/arathrae.jpeg"
+        }),
+    });
+    let updateBook = await response.json();
+    console.log(updateBook)
 }
 
 function renderBook(book) {
@@ -25,4 +47,5 @@ function renderBook(book) {
     `
 }
 
+updateBook()
 main()
