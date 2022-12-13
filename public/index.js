@@ -1,5 +1,5 @@
 async function main() {
-    let response = await fetch('https://js-building-an-admin-portal-seven.vercel.app/', {
+    let response = await fetch('https://js-building-an-admin-portal-seven.vercel.app/listBooks', {
         method:"GET",
     });
 
