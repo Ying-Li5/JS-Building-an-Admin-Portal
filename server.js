@@ -6,6 +6,8 @@ const Path = require('path');
 const app = express();
 const liveServer = require('live-server');
 
+app.listen(PORT, () => console.log(`Server is running in por $(PORT)`))
+
 async function main() {
 
     app.use(cors());
