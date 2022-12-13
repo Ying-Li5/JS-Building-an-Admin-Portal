@@ -75,3 +75,5 @@ async function saveBooks(books) {
 }
 
 main()
+
+module.exports = app;
