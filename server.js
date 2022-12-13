@@ -5,8 +5,7 @@ const Fs = require('fs').promises;
 const Path = require('path');
 const app = express();
 const liveServer = require('live-server');
-
-app.listen(PORT, () => console.log(`Server is running in por $(PORT)`))
+const PORT = process.env.PORT
 
 async function main() {
 
@@ -54,7 +53,7 @@ async function main() {
         res.json(bookToDelete)
     })
 
-    app.listen(3001, () => {
+    app.listen(process.env.PORT, () => {
         liveServer.start({
             port: 3000,
             logLevel: 0,
@@ -73,6 +72,7 @@ async function loadBooks() {
 async function saveBooks(books) {
     await Fs.writeFile(DB_PATH, JSON.stringify({ books }, null, 2))
 }
+
 
 main()
 
